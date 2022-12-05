@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "aliqornan.grpc.example.protocontract";
+option java_outer_classname = "CountryProto";
+
+package protocontract;
+
+service CountryService {
+  rpc lookup(LookupRequest) returns (LookupReply) {}
+}
+
+message LookupRequest {
+  string code = 1;
+}
+
+message LookupReply {
+  bool success = 1;
+  Country data = 2;
+}
+
+message Country {
+  string code = 1;
+  string official_name = 2;
+}
