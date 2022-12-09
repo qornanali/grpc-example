@@ -1,5 +1,6 @@
 syntax = "proto3";
 
+option go_package = "aliqornan/grpc/example/protocontract";
 option java_multiple_files = true;
 option java_package = "aliqornan.grpc.example.protocontract";
 option java_outer_classname = "CountryProto";
@@ -22,4 +23,6 @@ message LookupReply {
 message Country {
   string code = 1;
   string official_name = 2;
+  int32 number_of_population = 3;
+  float tourism_rating = 4;
 }
