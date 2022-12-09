@@ -1,22 +1,19 @@
 package aliqornan.grpc.example.server
 
-import aliqornan.grpc.example.protocontract.Country
-import aliqornan.grpc.example.protocontract.CountryServiceGrpcKt
-import aliqornan.grpc.example.protocontract.LookupReply
-import aliqornan.grpc.example.protocontract.LookupRequest
+import aliqornan.grpc.example.protocontract.*
 
 class CountryService : CountryServiceGrpcKt.CountryServiceCoroutineImplBase() {
 
-    override suspend fun lookup(request: LookupRequest): LookupReply = LookupReply.newBuilder()
-        .setData(findCountryByCode(request.code))
-        .setSuccess(true)
-        .build()
+    override suspend fun lookup(request: LookupRequest): LookupReply = lookupReply {
+        data = findCountryByCode(request.code)
+        success = true
+    }
 
-    private fun findCountryByCode(code: String): Country? = Country.newBuilder()
-        .setCode("ID")
-        .setOfficialName("Republik Indonesia")
-        .setNumberOfPopulation(2000000)
-        .setTourismRating(4.5f)
-        .build()
+    private fun findCountryByCode(countryCode: String): Country = country {
+        code = "ID"
+        officialName = "Republik Indonesia"
+        numberOfPopulation = 2000000
+        tourismRating = 4.5f
+    }
 
 }

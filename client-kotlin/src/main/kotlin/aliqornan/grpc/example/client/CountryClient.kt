@@ -14,8 +14,8 @@ class CountryClient(
 
     private val stub: CountryServiceCoroutineStub = CountryServiceCoroutineStub(channel)
 
-    suspend fun lookup(code: String): LookupReply {
-        val request = lookupRequest { this.code = code }
+    suspend fun lookup(countryCode: String): LookupReply {
+        val request = lookupRequest { code = countryCode }
         return stub.lookup(request)
     }
 
