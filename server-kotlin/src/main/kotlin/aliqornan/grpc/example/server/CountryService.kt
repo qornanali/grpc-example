@@ -15,6 +15,8 @@ class CountryService : CountryServiceGrpcKt.CountryServiceCoroutineImplBase() {
     private fun findCountryByCode(code: String): Country? = Country.newBuilder()
         .setCode("ID")
         .setOfficialName("Republik Indonesia")
+        .setNumberOfPopulation(2000000)
+        .setTourismRating(4.5f)
         .build()
 
 }
